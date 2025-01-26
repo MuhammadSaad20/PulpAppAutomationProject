@@ -2,6 +2,9 @@ from selenium.webdriver.common.by import By
 
 from utilities.readProperties import ReadConfig
 
+
+# Report page is read only page atm
+# Repor page interaction function comes here in future
 class ReportPage:
     author = ReadConfig.getAuthorName()
 
@@ -26,6 +29,5 @@ class ReportPage:
             print(f"An error occurred while verifying the author: {e}")
             return False
 
-    #Report page is read only page atm
-    #Repor page interaction function comes here in future
+
 

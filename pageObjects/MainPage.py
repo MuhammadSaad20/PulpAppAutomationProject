@@ -32,7 +32,7 @@ class MainPage:
                 EC.element_to_be_clickable((By.ID, MainPage.book_menu_table_id))
             )
 
-            # Scroll to the element to ensure visibility SANITY CHECK NO NEED
+            # Scroll to the element to ensure visibility (SANITY CHECK NO NEED)
             # self.driver.execute_script("arguments[0].scrollIntoView(true);", table_link)
 
 

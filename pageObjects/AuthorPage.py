@@ -29,10 +29,10 @@ class AuthorPage:
         self.driver.find_element(By.ID, AuthorPage.click_button_id).click()
 
     def get_api_auth_token_from_cookies(self):
-        cookies = self.driver.get_cookies()  # Get all cookies
+        cookies = self.driver.get_cookies()
         api_auth_token = None
         for cookie in cookies:
-            if cookie['name'] == 'X-API-AUTH':  # Replace 'x-api-auth' with the actual cookie name if it's different
+            if cookie['name'] == 'X-API-AUTH':
                 api_auth_token = cookie['value']
                 break
         return api_auth_token
@@ -80,11 +80,10 @@ class AuthorPage:
         except Exception as e:
             print(f"An error occurred: {e}")
 
-
+    # TODO: Handle or log the error if the driver is already closed
 
     def close_driver(self):
         try:
             self.driver.close()
         except Exception as e:
             print(f"Error closing driver: {e}")
-            # Handle or log the error if the driver is already closed

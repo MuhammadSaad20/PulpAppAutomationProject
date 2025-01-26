@@ -51,10 +51,6 @@ class TestCreateAuthor:
         author_page.close_driver()
 
 
-
-
-
-
     def test_create_author_and_verify(self, setup):
 
         self.driver = setup
@@ -70,9 +66,6 @@ class TestCreateAuthor:
 
         # create author and capture api
         self.createAuthorAndCaptureApi()
-
-
-        #self.driver.close()
 
 
 
