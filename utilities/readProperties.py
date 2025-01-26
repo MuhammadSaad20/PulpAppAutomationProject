@@ -9,3 +9,7 @@ class ReadConfig:
     def getBaseURL():
         url=config.get('common info','base_url')
         return url
+    @staticmethod
+    def getAuthorName():
+        author=config.get('test info','author_name')
+        return author

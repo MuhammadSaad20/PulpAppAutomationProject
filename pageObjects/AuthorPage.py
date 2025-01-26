@@ -1,5 +1,9 @@
 import requests
+from selenium.webdriver import ActionChains
 from selenium.webdriver.common.by import By
+from selenium.webdriver.support.wait import WebDriverWait
+from selenium.webdriver.support import expected_conditions as EC
+
 
 class AuthorPage:
 
@@ -7,6 +11,11 @@ class AuthorPage:
     author_name = "AutomationTask-MuhammadSaad"
     click_button_id = "createauthorbutton"
     api_endpoint = "https://thepulper.herokuapp.com/apps/pulp/api/authors"
+
+    report_menu_id="menu-reports-menu"
+    report_menu_author_id="menu-authors-report-list"
+
+
 
     def __init__(self, driver):
         self.driver = driver
@@ -52,6 +61,26 @@ class AuthorPage:
         except requests.exceptions.RequestException as e:
             print(f"Error during API request: {e}")
             return None
+
+
+    def click_report_authors_section(self):
+        try:
+            report_menu = self.driver.find_element(By.ID, AuthorPage.report_menu_id)
+            # hover mouse to see the element
+            ActionChains(self.driver).move_to_element(report_menu).perform()
+
+            wait = WebDriverWait(self.driver, 10)
+            report_menu = wait.until(
+                EC.element_to_be_clickable((By.ID, AuthorPage.report_menu_author_id))
+            )
+
+
+            report_menu.click()
+            print("Successfully clicked on the 'Report' List Link")
+        except Exception as e:
+            print(f"An error occurred: {e}")
+
+
 
     def close_driver(self):
         try:
