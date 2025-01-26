@@ -39,12 +39,11 @@ class TestBookTable:
         print("comparing table data")
         if web_data == csv_data:
             self.logging.info(f"Book Table data matches the provided CSV file")
-            self.driver.close()
             assert True
         else:
             self.logging.error(f"Book Table data does not match the provided CSV file")
-            self.driver.close()
             assert False
+        self.driver.close()
 
     @pytest.mark.parametrize("csv_file_path", ["TestData/Book_Details.csv"])
     def test_compare_book_table(self, setup, csv_file_path):

@@ -28,29 +28,30 @@ class AuthorPage:
                 break
         return api_auth_token
 
+#TODO : NOT a ideal way to verify api code we can used selenium wire( try but had some library issue)
+# try dev tool browser but for fire fox need to add proxy selenium not support directly
+
     def createAuthorApiRequest(self):
-        # Retrieve the x-api-auth token from cookies
+
         api_auth_token = self.get_api_auth_token_from_cookies()
 
         if not api_auth_token:
             print("Error: x-api-auth token not found in cookies.")
-            return None  # If the token is not found, return None or handle the error accordingly
+            return None
 
-        # Prepare the payload and headers with the retrieved token
         payload = {"name": AuthorPage.author_name + " Test"}
         headers = {
-            "x-api-auth": api_auth_token  # Use the retrieved token here
+            "x-api-auth": api_auth_token
         }
 
         try:
             response = requests.post(AuthorPage.api_endpoint, json=payload, headers=headers)
 
-            # Check the response status code
             print(f"API Response Status Code: {response.status_code}")
-            return response.status_code  # Return the status code of the API response
+            return response.status_code
         except requests.exceptions.RequestException as e:
             print(f"Error during API request: {e}")
-            return None  # Return None if there is an error during the request
+            return None
 
     def close_driver(self):
         try:
