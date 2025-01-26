@@ -39,9 +39,11 @@ class TestBookTable:
         print("comparing table data")
         if web_data == csv_data:
             self.logging.info(f"Book Table data matches the provided CSV file")
+            self.driver.close()
             assert True
         else:
             self.logging.error(f"Book Table data does not match the provided CSV file")
+            self.driver.close()
             assert False
 
     @pytest.mark.parametrize("csv_file_path", ["TestData/Book_Details.csv"])
@@ -53,7 +55,7 @@ class TestBookTable:
 
         #  Get the main page
         self.navigate_to_book_page()
-        self.logging.info("Navigated to the base URL.")
+        self.logging.info("Navigated to the BookTable Page.")
 
         #  Get table data from the webpage
         web_data = self.get_web_table_data(self.driver)
@@ -64,8 +66,6 @@ class TestBookTable:
         # Compare the two datasets
         self.compare_table_data(web_data, csv_data)
 
-
-        self.driver.close()
 
    
 

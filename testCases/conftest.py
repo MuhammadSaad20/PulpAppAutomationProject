@@ -1,19 +1,24 @@
 import pytest
 from selenium import webdriver
+# from seleniumwire import webdriver
 
 @pytest.fixture()
 def setup(browser):
     # TODO: Add multiple browser support
     if browser=='chrome':
-        driver=webdriver.Chrome()
+        driver = webdriver.Chrome()
         print("starting chrome browser")
+
+    #TODO : Need to add network loging for firefox also need to prox like browsMob proxy selenium not support firefox
     elif browser=='firefox':
         driver = webdriver.Firefox()
         print("starting firefox browser")
     else:
         driver = webdriver.Firefox()
         print("starting default browser")
-    return driver
+
+    yield driver
+    driver.quit()
 
 def pytest_addoption(parser):
     parser.addoption("--browser")
