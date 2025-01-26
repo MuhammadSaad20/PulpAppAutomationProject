@@ -3,6 +3,7 @@ from selenium import webdriver
 
 @pytest.fixture()
 def setup(browser):
+    # TODO: Add multiple browser support
     if browser=='chrome':
         driver=webdriver.Chrome()
         print("starting chrome browser")
@@ -20,12 +21,6 @@ def pytest_addoption(parser):
 @pytest.fixture()
 def browser(request):
     return request.config.getoption("--browser")
-
-
-
-
-
-
 
 
 @pytest.hookimpl(optionalhook=True)

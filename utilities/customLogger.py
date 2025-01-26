@@ -2,6 +2,7 @@ import logging
 
 class LogGen:
     @staticmethod
+    #TODO: Need to look into this issue logs not generated
     def loggen():
         logging.basicConfig(filename=".\\Logs\\automation.log",
                             format='%(asctime)s: %(levelname)s: %(message)s', datefmt='%m/%d/%Y %I:%M:%S %p')

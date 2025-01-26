@@ -16,18 +16,18 @@ class TestBookTable:
         main_page.click_book_table_section()
 
 
-
-
     def get_web_table_data(self, driver):
-
+        # TODO need a better approach to handle this
         book_page = BookPage(driver)
         table_data = book_page.get_table_data()
         print("Reading web table data")
         self.logging.info(f"Fetched table data from the webpage")
         return table_data
 
+    # TODO we can make this function as utility
     def get_csv_data(self, file_path):
         print("Reading csv file")
+        #TODO need a better approach to handle this
         with open(file_path, mode="r", encoding="utf-8") as file:
             csv_reader = csv.reader(file)
             next(csv_reader)  # Skip header row
@@ -51,17 +51,17 @@ class TestBookTable:
         self.driver.get(self.base_url)
         print(self.base_url)
 
-        # Step 01 : Get the main page
+        #  Get the main page
         self.navigate_to_book_page()
         self.logging.info("Navigated to the base URL.")
 
-        # Step 02: Get table data from the webpage
+        #  Get table data from the webpage
         web_data = self.get_web_table_data(self.driver)
 
-        # Step 03: Get data from the CSV file
+        # Get data from the CSV file
         csv_data = self.get_csv_data(csv_file_path)
 
-        # Step 04: Compare the two datasets
+        # Compare the two datasets
         self.compare_table_data(web_data, csv_data)
 
 

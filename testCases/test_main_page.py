@@ -11,7 +11,7 @@ class TestMainPage:
     def test_mainPage_Title(self, setup):
         self.logging.info("Testing main page title")
         self.driver = setup
-        self.driver.get(self.base_url)  # Navigate to the correct URL
+        self.driver.get(self.base_url)
         title = self.driver.title
         if title == "Pulp App Main Menu":
             self.driver.close()

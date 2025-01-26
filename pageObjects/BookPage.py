@@ -8,10 +8,9 @@ class BookPage:
         self.driver = driver
 
     def get_table_data(self):
-        """Fetch all rows and columns from the Book Table."""
-        table = self.driver.find_element(By.ID, "bookslisttable")  # Replace with actual table ID or locator
-        rows = table.find_elements(By.TAG_NAME, "tr")  # Get all rows in the table
 
+        table = self.driver.find_element(By.ID, "bookslisttable")
+        rows = table.find_elements(By.TAG_NAME, "tr")
         table_data = []
         for row in rows[1:]:  # Skip header row
             cols = row.find_elements(By.TAG_NAME, "td")  # Get all columns for the row
