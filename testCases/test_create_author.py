@@ -32,6 +32,7 @@ class TestCreateAuthor:
             assert True
         else:
             self.logging.error(f"Failed to create author page api return {status_code}")
+            self.driver.save_screenshot("./screenshots/author_create.png")
             assert False
 
         # Verify the report section
@@ -47,6 +48,8 @@ class TestCreateAuthor:
             assert True
         else:
             self.logging.error(f"Failed to verify author report")
+            self.driver.save_screenshot("./screenshots/verify_report.png")
+
             assert False
         author_page.close_driver()
 
